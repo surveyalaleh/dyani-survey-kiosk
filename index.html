@@ -4,154 +4,43 @@
   <meta charset="UTF-8">
   <title>Dyani Survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       background: #000;
-      overflow: hidden;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     }
-
-    /* Bottom bar for buttons */
-    .controls {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 12px 24px 18px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.9);
-      box-sizing: border-box;
-    }
-
-    .controls button {
-      min-width: 140px;
-      padding: 12px 18px;
-      font-size: 18px;
-      border-radius: 999px;
-      border: 2px solid #ffffff;
-      background: transparent;
-      color: #ffffff;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .controls button:active {
-      transform: scale(0.97);
-    }
-
-    .btn-start {
-      background: #ffffff;
-      color: #000000;
-      font-weight: 600;
-    }
-
-    /* Area where the survey sits */
-    .survey-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 70px; /* leave space for the buttons bar */
+    .container {
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #000;
-      overflow: hidden;
-      box-sizing: border-box;
     }
-
-    /* Center the SurveyMonkey widget in a portrait-ish column */
-    #smcx-sdk {
+    .start-img {
       width: 100%;
-      max-width: 780px; /* adjust this to make it “narrower” or “wider” */
       height: 100%;
-      max-height: 100%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      overflow: hidden;
-    }
-
-    /* Make the iframe fill the column */
-    #smcx-sdk iframe {
-      width: 100% !important;
-      height: 100% !important;
+      object-fit: cover;
+      cursor: pointer;
       border: 0;
-    }
-
-    /* Tiny SurveyMonkey credit – optional to keep visible */
-    .sm-credit {
-      position: absolute;
-      bottom: 76px; /* just above the button bar */
-      left: 0;
-      right: 0;
-      text-align: center;
-      font: 12px Helvetica, sans-serif;
-      color: #999;
+      display: block;
     }
   </style>
 </head>
-
 <body>
-
-  <div class="survey-wrapper">
-    <!-- SurveyMonkey Embed -->
-    <script>
-      (function(t,e,s,n){
-          var o,a,c;
-          t.SMCX=t.SMCX||[];
-          if(!e.getElementById(n)){
-              o=e.getElementsByTagName(s);
-              a=o[o.length-1];
-              c=e.createElement(s);
-              c.type="text/javascript";
-              c.async=!0;
-              c.id=n;
-              c.src="https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd8qZ8ON_2FyjUqTzYvfSuztE6Ype9Fdi6IrsKlQ_2FOxEc4Y.js";
-              a.parentNode.insertBefore(c,a.nextSibling);
-          }
-      })(window,document,"script","smcx-sdk");
-    </script>
-  </div>
-
-  <!-- Optional credit (can remove if you don’t care about it being visible) -->
-  <div class="sm-credit">
-    <a
-      href="https://www.surveymonkey.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      style="color:#999; text-decoration:none;"
+  <div class="container">
+    <img
+      src="dyani-start.png"
+      alt="We’d love to hear from you!"
+      class="start-img"
+      onclick="goToSurvey()"
     >
-      Create your own user feedback survey
-    </a>
-  </div>
-
-  <!-- Bottom controls -->
-  <div class="controls">
-    <button onclick="goBack()">Back</button>
-    <button class="btn-start" onclick="startOver()">Start over</button>
   </div>
 
   <script>
-    function goBack() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        window.location.href = "index.html";
-      }
-    }
-    function startOver() {
-      window.location.href = "index.html";
+    function goToSurvey() {
+      window.location.href = "survey.html";
     }
   </script>
-
 </body>
 </html>
